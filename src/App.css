@@ -28,7 +28,7 @@ label {
 }
 
 
-input[type=email], input[type=password], select {
+input[type=text], input[type=password], select {
     /* margin-bottom: 12px; */
     width: 100%;
     padding: 12px 20px;
@@ -39,7 +39,7 @@ input[type=email], input[type=password], select {
     
   }
   
-  input[type=submit] {
+  button, input[type=submit] {
     text-transform: uppercase;
     width: 100%;
     background-color: #676afc;
@@ -81,12 +81,37 @@ div.ChildContainer {
     transform: translate(-50%, -50%);
     box-shadow: 0.5rem 0.5rem #5254c4, -0.5rem -0.5rem #7b7dff;
   }
+  
+ button.Logout {
+   background-color: transparent;
+   color: red;
+   padding: 0;
+   margin: 0;
+   box-shadow: none;
+   text-align: right;
+   text-transform: none;
+ }
 
-  p.FormError {
+ button.Link {
+  background-color: transparent;
+  color: #4b4dd1;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  text-align: center;
+  text-transform: none;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+ 
+
+  p.ErrorText {
     color: red;
     text-align: left;
     /* margin-bottom: 12px; */
   }
+  
 
  .FormContainer {
    margin-bottom: 12px;

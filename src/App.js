@@ -8,6 +8,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
+  Link
   } from "react-router-dom";
 
   function App() {
@@ -18,10 +19,25 @@ import {
       return <Login setToken={setToken} />
     }
 
+    const logout = () => {
+      sessionStorage.clear(setToken);
+      window.location.reload(true);
+    }
+
   return (
     <div className='Container'>
-      <h3>Application</h3>
+    <div className='ChildContainer'>  
+
+
       <Router>
+      <Link to="/Preferences"><button>
+              Preferences 
+            </button>
+      </Link>
+      <Link to="/Dashboard"><button>
+              Dashboard 
+            </button>
+      </Link>
         <Routes>
           <Route
             path="/dashboard"
@@ -33,6 +49,8 @@ import {
           </Route>
         </Routes> 
       </Router>
+      <button className='Logout' onClick={logout}>Logout</button>
+      </div>
     </div>
   );
 }

@@ -1,6 +1,16 @@
 import LoginImage from './login.png';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import { useForm } from 'react-hook-form';
+
+
+// validation schema
+const schema = yup.object().shape({
+  username: yup.string().required(),
+  password: yup.string().required(),
+}).required();
 
 
 async function loginUser(credentials) {
@@ -16,20 +26,26 @@ async function loginUser(credentials) {
 
 
 export default function Login({ setToken }) {
-  const [email, setEmail] = useState();
+
+  // handle validation
+  const { register, handleSubmit, formState:{ errors } } = useForm({
+    resolver: yupResolver(schema)
+  });
+
+  const [username, setUsername] = useState();
   const [password, setPassword] = useState();
 
-
-  const handleSubmit = async e => {
-    e.preventDefault();
+  const onSubmit = async data =>  {
     const token = await loginUser({
-      email,
+      username,
       password
     });
     setToken(token);
   }
 
   return(
+
+    // header area of container
     <div className="ChildContainer">
         <div className='ContentContainer'> 
             <div>           
@@ -44,27 +60,37 @@ export default function Login({ setToken }) {
             <h3>Authenticator</h3>
             <p>Log-in to see the power</p>
         </div>
-        <form onSubmit={handleSubmit}>    
+
+        {/* start of the form */}
+        <form onSubmit={handleSubmit(onSubmit)} noValidate>    
             <div className='FormContainer'>
-                <label htmlFor='email'>Email</label>
+                <label htmlFor='username'>Username</label>
                 <input                
-                    type="email" 
-                    onChange={e => setEmail(e.target.value)}
-                    value={email}
-                    required                  
+                    type="text" 
+                    onChange={e => setUsername(e.target.value)}
+                    {...register('username')}                  
                 />
+                <p className="ErrorText">{errors.username?.message}</p>
             </div>  
             <div className="FormContainer">    
                 <label htmlFor='password'>Password</label>            
                 <input
                     type="password" 
                     onChange={e => setPassword(e.target.value)}
-                    value={password}
                     required
+                    {...register('password')}
                 />
+               <p className="ErrorText">{errors.password?.message}</p>
             </div>
             <input type="submit" value="login"/>
-      </form>
+          </form>
+      {/* end of the form */}
+
+      {/* sign-up button */}
+      <div className="ContentContainer">
+        <p>Not a user yet? <a className='Link' href='/register'>Register here!</a></p>
+      </div>
+      
     </div>
   )
 }
