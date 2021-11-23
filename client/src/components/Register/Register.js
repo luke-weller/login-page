@@ -17,16 +17,22 @@ const Register = (props) => {
       };
 
     return (
-        <div>
+        <div className="ContentContainer">
+          <div className="FormContainer">
             <h1>Register</h1>
+            <label htmlFor='username'>Username</label>
             <input
-                placeholder="username"
                 onChange={(e) => setRegisterUsername(e.target.value)}
+                type="text"
             />
+          </div>
+          <div className="FormContainer">
+            <label htmlFor='password'>Password</label>
             <input
-                placeholder="password"
+                type="password"
                 onChange={(e) => setRegisterPassword(e.target.value)}
             />
+          </div>
             <button onClick={register}>Submit</button>
             
         </div>
