@@ -4,7 +4,8 @@ import { useState } from "react";
 const Login = () => {
     const [loginUsername, setLoginUsername] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
-    const login = () => {
+
+    const userAuthentication = () => {
         Axios({
           method: "POST",
           data: {
@@ -32,7 +33,7 @@ const Login = () => {
                   onChange={(e) => setLoginPassword(e.target.value)}
               />
             </div>
-            <button onClick={login}>Submit</button>
+            <button onClick={userAuthentication}>Submit</button>
         </div>
     )
 }

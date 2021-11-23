@@ -1,7 +1,7 @@
 import Axios from "axios";
 import { useState } from "react";
 
-const Register = (props) => {
+const Register = () => {
     const [registerUsername, setRegisterUsername] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
     const register = () => {
@@ -18,8 +18,9 @@ const Register = (props) => {
 
     return (
         <div className="ContentContainer">
+          <h1>Register</h1>
+
           <div className="FormContainer">
-            <h1>Register</h1>
             <label htmlFor='username'>Username</label>
             <input
                 onChange={(e) => setRegisterUsername(e.target.value)}

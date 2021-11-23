@@ -12,7 +12,7 @@ const User = require('./user')
 const app = express();
 
     mongoose.connect(
-        "mongodb+srv://dbroot:bzT3yVw92TZYKnRp@cluster0.hlnde.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+        "mongodb+srv://dbroot:bzT3yVw92TZYKnRp@sandbox.hlnde.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
         {
           useNewUrlParser: true,
           useUnifiedTopology: true,
