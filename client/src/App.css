@@ -25,7 +25,7 @@ p {
 label {
 	color: #5a5a70;
 	font-size: 16px;
-}
+} */
 
 
 /* input[type=text], input[type=password], select {
@@ -47,9 +47,9 @@ button, input[type=submit] {
     cursor: pointer;
     transition-duration: 0.4s;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  }
+  } */
 
-  button, input[type=submit]:hover {
+  /* button, input[type=submit]:hover {
     background-color: #4b4dd1;      
   } */
    
