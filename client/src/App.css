@@ -100,6 +100,8 @@ div.ChildContainer {
   font-weight: 500;
 }
 
+*/
+
   p.ErrorText {
     color: red;
     text-align: left;
@@ -107,7 +109,7 @@ div.ChildContainer {
   }
   
 
- .FormContainer {
+ /* .FormContainer {
    margin-bottom: 12px;
    text-align: left;
  } */
