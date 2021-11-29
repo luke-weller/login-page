@@ -1,5 +1,4 @@
 import Axios from "axios";
-import { useState } from "react";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -36,7 +35,7 @@ const Register = () => {
 
     return (
         <div>
-          <h1>Register</h1>
+          <h2>Register</h2>
           <form onSubmit={handleSubmit(userRegistration)} noValidate>
           
             {/* first name field */}

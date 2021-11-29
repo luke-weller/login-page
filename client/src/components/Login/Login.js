@@ -2,6 +2,7 @@ import Axios from "axios";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import PropTypes from 'prop-types';
 
 // validation schema
 const schema = yup.object().shape({
@@ -9,7 +10,7 @@ const schema = yup.object().shape({
   password: yup.string().required("Password is required"),
 }).required();
 
-const Login = () => {
+const Login = ( { setToken }) => {
   // validation
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
@@ -17,7 +18,7 @@ const Login = () => {
 
     // logic to authenticate a user
     const userAuthentication = (data) => {
-        Axios({
+        const token = Axios({
           method: "POST",
           data: {
             username: data.username,
@@ -26,11 +27,12 @@ const Login = () => {
           withCredentials: true,
           url: "http://localhost:4000/login",
         }).then((res) => console.log(res));
+        setToken(token);
       };
 
     return (        
         <div>
-          <h1>Login</h1>
+          <h2>Login</h2>
           <form onSubmit={handleSubmit(userAuthentication)} noValidate>
 
             {/* username field */}
@@ -62,3 +64,7 @@ const Login = () => {
 }
 
 export default Login
+
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired
+}
