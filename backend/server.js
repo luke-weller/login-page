@@ -23,6 +23,7 @@ const app = express();
       );
 
 
+
 //middleware ----------
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -35,17 +36,12 @@ app.use(session({
     secret: "secretcode",
     resave: true,
     saveUninitalized: true
-}))
+}));
 app.use(cookieParser("secretcode"))
 app.use(passport.initialize());
 app.use(passport.session());
 require('./passportConfig')(passport);
 
-app.use('/login', (req, res) => {
-  res.send({
-    token: 'test123'
-  });
-});
 
 
 //routes --------------
@@ -57,15 +53,12 @@ app.post("/login", (req, res, next) => {
         req.logIn(user, (err) => {
           if (err) throw err;
           res.send("Successfully Authenticated");
-          console.log(req.user, "Successfully authenticated");
+          console.log(req.user);
         });
       }
     })(req, res, next);
   });
-
   
-
-
   app.post("/register", (req, res) => {
     User.findOne({ username: req.body.username }, async (err, doc) => {
       if (err) throw err;

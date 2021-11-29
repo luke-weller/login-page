@@ -27,6 +27,9 @@ module.exports = function (passport) {
     User.findOne({ _id: id }, (err, user) => {
       const userInformation = {
         username: user.username,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
       };
       callback(err, userInformation);
     });
