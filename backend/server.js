@@ -34,13 +34,13 @@ app.use(cors({
 app.use(session({
     secret: "secretcode",
     resave: true,
-    saveUninitalized: true
+    saveUninitalized: true,
+    // cookie: { secure: true }  // prevent cookie from showing in console
 }))
 app.use(cookieParser("secretcode"))
 app.use(passport.initialize());
 app.use(passport.session());
 require('./passportConfig')(passport);
-
 
 
 //routes --------------
@@ -58,7 +58,6 @@ app.post("/login", (req, res, next) => {
     })(req, res, next);
   });
 
-  
 
 
   app.post("/register", (req, res) => {

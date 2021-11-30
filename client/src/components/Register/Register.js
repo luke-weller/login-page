@@ -2,6 +2,7 @@ import Axios from "axios";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { useNavigate } from 'react-router-dom';
 
 // validation schema
 const schema = yup.object().shape({
@@ -12,12 +13,13 @@ const schema = yup.object().shape({
   email: yup.string().required("Email is required").email("Must be a valid email address"),
 }).required();
 
-const Register = () => {
+const Register = ({ onLoginUpdate }) => {
     // validation
     const { register, handleSubmit, formState: { errors } } = useForm({
       resolver: yupResolver(schema),
     });
 
+    const navigate = useNavigate();
     const userRegistration = (data) => {
         Axios({
           method: "POST",
@@ -31,6 +33,8 @@ const Register = () => {
           withCredentials: true,
           url: "http://localhost:4000/register",
         }).then((res) => console.log(res));
+        onLoginUpdate(true);
+        navigate('/');
       };
 
     return (
