@@ -23,7 +23,6 @@ const app = express();
       );
 
 
-
 //middleware ----------
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -36,7 +35,7 @@ app.use(session({
     secret: "secretcode",
     resave: true,
     saveUninitalized: true
-}));
+}))
 app.use(cookieParser("secretcode"))
 app.use(passport.initialize());
 app.use(passport.session());
@@ -53,12 +52,15 @@ app.post("/login", (req, res, next) => {
         req.logIn(user, (err) => {
           if (err) throw err;
           res.send("Successfully Authenticated");
-          console.log(req.user);
+          console.log(req.user, "Successfully authenticated");
         });
       }
     })(req, res, next);
   });
+
   
+
+
   app.post("/register", (req, res) => {
     User.findOne({ username: req.body.username }, async (err, doc) => {
       if (err) throw err;

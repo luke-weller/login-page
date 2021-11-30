@@ -29,8 +29,8 @@ const Login = () => {
       };
 
     return (        
-        <div>
-          <h1>Login</h1>
+        <div className='ChildContainer'>
+          <h2>Login</h2>
           <form onSubmit={handleSubmit(userAuthentication)} noValidate>
 
             {/* username field */}
