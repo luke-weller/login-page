@@ -7,6 +7,7 @@ import Header from "./components/Header/Header";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Preferences from "./components/Preferences/Preferences";
 import Logout from "./components/Logout/Logout";
+import GetUser from "./components/GetUser/GetUser";
 import {
   BrowserRouter as Router,
   Route,
@@ -16,24 +17,6 @@ import {
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const [data, setData] = useState(null);
-  // const [token, setToken] = useState();
-  // if(!token) {
-  //   return <Login setToken={setToken} />
-  // }
-
-  // // return user data for personalisation when logged in
-  // const getUser = () => {
-  //   Axios({
-  //     method: "GET",
-  //     withCredentials: true,
-  //     url: "http://localhost:4000/user",
-  //   }).then((res) => {
-  //     setData(res.data);
-  //     console.log(res.data);
-  //   });
-  // };
-
   return (
     <div className="Container">
       <Router>
@@ -71,12 +54,8 @@ function App() {
           ></Route>
         </Routes>
       </Router>
-
-      {/* <div className='ChildContainer'>
-        <h2>Get User</h2>
-        <button onClick={getUser}>Submit</button>
-        {data ? <h1>Welcome Back {data.username}</h1> : null}
-      </div> */}
+      <GetUser />
+    
     </div>
   );
 }
