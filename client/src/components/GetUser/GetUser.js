@@ -18,7 +18,7 @@ const GetUser = () => {
     <div className='ChildContainer'>
         <h2>Get User</h2>
         <button onClick={returnUser}>Submit</button>
-        {data ? <h1>Welcome Back {data.username}</h1> : null}
+        {data ? <h1>Welcome Back, {data.firstName}.</h1> : null}
   </div>
   );
 };
